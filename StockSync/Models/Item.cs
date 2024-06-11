@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace StockSync.Models
+﻿namespace StockSync.Models
 {
     public class Item
     {
@@ -13,7 +11,8 @@ namespace StockSync.Models
         public string Description { get; set; } = string.Empty;
         public int Quantity { get; set; }
         public decimal Price { get; set; }
-        public Category Category { get; set; } 
+        public int CategoryID { get; set; }
+        public Category Category { get; set; } = default!;
         public ICollection<Movement> StockMovements { get; set; } = new List<Movement>();
 
     }

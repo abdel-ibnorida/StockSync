@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using StockSync.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +8,10 @@ builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+builder.Services.AddScoped<IItemsService, ItemService>();
+
 
 var app = builder.Build();
 

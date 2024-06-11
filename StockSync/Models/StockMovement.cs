@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace StockSync.Models
+﻿namespace StockSync.Models
 {
     public class Movement
     {

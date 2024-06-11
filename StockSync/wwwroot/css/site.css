@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+/*Start custom style*/
+.img-preview{
+    display:none;
+}
+/*End custom style*/

@@ -11,7 +11,8 @@
         }
         public IActionResult Index()
         {
-            return View();
+            var games = _itemService.GetAll();
+            return View(games);
         }
         [HttpGet]
         public IActionResult Create()

@@ -41,5 +41,12 @@
             _dbContext.Movements.Add(movement);
             _dbContext.SaveChanges();
         }
+        public IEnumerable<Item> GetAll()
+        {
+            return _dbContext.Items
+           .Include(g => g.Category)
+           .AsNoTracking()
+           .ToList();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Item>
+@{
     ViewData["Title"] = "Products";
 }
 
@@ -7,6 +8,21 @@
     Add item
 </a>
 
-<div>
-    Welcome to items
-</div>
+@if (!Model.Any())
+{
+    <div>
+        <p>No items were added yet.</p>
+    </div>
+}
+else
+{
+    @foreach(Item item in Model){
+        <div>
+            <img src="@($"{FileSettings.ImagesPath}/{item.Img}")" />
+            @item.ItemName
+            @item.Price
+            @item.
+            <i class="fa-solid fa-info"></i>
+        </div>
+    }
+}

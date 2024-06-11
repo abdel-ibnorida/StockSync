@@ -35,5 +35,15 @@
             await _itemService.Create(model);
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Details(int id)
+        {
+            Item item = _itemService.GetById(id);
+
+            if (item is null)
+                return NotFound();
+
+            return View(item);
         }
+    }
+        
 }

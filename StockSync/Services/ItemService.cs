@@ -44,9 +44,16 @@
         public IEnumerable<Item> GetAll()
         {
             return _dbContext.Items
-           .Include(g => g.Category)
+           .Include(i => i.Category)
            .AsNoTracking()
            .ToList();
+        }
+        public Item? GetById(int id)
+        {
+            return _dbContext.Items
+           .Include(i => i.Category)
+           .AsNoTracking()
+           .SingleOrDefault(i => i.ItemID == id);
         }
     }
 }

@@ -2,57 +2,59 @@
 @{
     ViewData["Title"] = "Edit Item";
 }
+<link rel="stylesheet" href="~/css/create&edit.css" asp-append-version="true" />
+<div class="container-edit-page">
+    <h1>
+        Edit Item
+    </h1>
 
-<h5>
-    Edit Item
-</h5>
-
-<form asp-controller="Items" asp-action="Edit" enctype="multipart/form-data" >
-    <div class="form-container">
-        <input type="hidden" asp-for="ItemId" />
-        <div>
-            <label asp-for="ItemName"></label>
-            <input type="text" asp-for="ItemName" placeholder="Name">
-            <span asp-validation-for="ItemName"></span>
+    <form class="form-container" asp-controller="Items" asp-action="Edit" enctype="multipart/form-data">
+        <div class="inputs-container">
+            <input type="hidden" asp-for="ItemId" />
+            <div>
+                <label asp-for="ItemName"></label>
+                <input type="text" asp-for="ItemName" placeholder="Name">
+                <span asp-validation-for="ItemName"></span>
+            </div>
+            <div>
+                <label asp-for="CategoryID"></label>
+                <select asp-for="CategoryID" asp-items="Model.Categories" data-placeholder="Select a category">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="CategoryID"></span>
+            </div>
+            <div>
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" placeholder="Description"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div>
+                <label asp-for="Price"></label>
+                <input type="number" asp-for="Price" placeholder="Price">
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div>
+                <label asp-for="Quantity"></label>
+                <input type="number" asp-for="Quantity" placeholder="Quantity">
+                <span asp-validation-for="Quantity"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Img"></label>
+                <input type="file" asp-for="Img"
+                       data-rule-extension="@FileSettings.AllowedExtensions.Replace(".", string.Empty)"
+                       data-msg-extension="Not allowed extension"
+                       data-rule-filesize="@FileSettings.MaxFileSizeInBytes"
+                       data-msg-filesize="Maximum allowed size is (@FileSettings.MaxFileSizeInMB)MB" />
+                <small class="form-text text-muted">Only @FileSettings.AllowedExtensions files are allowed with max size (@FileSettings.MaxFileSizeInMB)MB</small>
+                <span asp-validation-for="Img"></span>
+            </div>
+            <button type="submit" asp-action="Edit">Edit</button>
         </div>
-        <div>
-            <label asp-for="CategoryID"></label>
-            <select asp-for="CategoryID" asp-items="Model.Categories" data-placeholder="Select a category">
-                <option value=""></option>
-            </select>
-            <span asp-validation-for="CategoryID"></span>
+        <div class="img-preview-container">
+            <img class="img-preview" style="display: block;" src="@($"{FileSettings.ItemImagesPath}/{Model.CurrentImg}")" alt="image" />
         </div>
-        <div>
-            <label asp-for="Description"></label>
-            <textarea asp-for="Description" placeholder="Description"></textarea>
-            <span asp-validation-for="Description"></span>
-        </div>
-        <div>
-            <label asp-for="Price"></label>
-            <input type="number" asp-for="Price" placeholder="Price">
-            <span asp-validation-for="Price"></span>
-        </div>
-        <div>
-            <label asp-for="Quantity"></label>
-            <input type="number" asp-for="Quantity" placeholder="Quantity">
-            <span asp-validation-for="Quantity"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Img"></label>
-            <input type="file" asp-for="Img"
-                   data-rule-extension="@FileSettings.AllowedExtensions.Replace(".", string.Empty)"
-                   data-msg-extension="Not allowed extension"
-                   data-rule-filesize="@FileSettings.MaxFileSizeInBytes"
-                   data-msg-filesize="Maximum allowed size is (@FileSettings.MaxFileSizeInMB)MB" />
-            <small class="form-text text-muted">Only @FileSettings.AllowedExtensions files are allowed with max size (@FileSettings.MaxFileSizeInMB)MB</small>
-            <span asp-validation-for="Img"></span>
-        </div>
-        <button type="submit" asp-action="Edit">Edit</button>
-    </div>
-    <div class="img-preview-container">
-        <img class="img-preview" style="display: block;" src="@($"{FileSettings.ImagesPath}/{Model.CurrentImg}")" alt="image" />
-    </div>
-</form>
+    </form>
+</div>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

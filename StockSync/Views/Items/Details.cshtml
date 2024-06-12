@@ -2,17 +2,27 @@
 @{
     ViewData["Title"] = "Item Details";
 }
-
-<div >
-    <div>
-        <img src="@($"{FileSettings.ImagesPath}/{Model.Img}")" alt="@Model.ItemName" />
-    </div>
-    <div>
-        <h1 >@Model.ItemName</h1>
-        <p>@Model.ItemID</p>
-        <span >@Model.Category?.Name</span>
-        <p>@Model.Description</p>
-        <p>@Model.Quantity</p>
-        <p>@Model.Price</p>
+<link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
+<div class="container-details-page">
+    <h1>
+        Item Details
+    </h1>
+    <div class="item-details-container">
+        <div class="img-container">
+            <img src="@($"{FileSettings.ItemImagesPath}/{Model.Img}")" alt="@Model.ItemName" />
+        </div>
+        <div class="info-container">
+            <h2>@Model.ItemName</h2>
+            <label>Id:</label>
+            <p>@Model.ItemID</p>
+            <label>Category</label>
+            <p>@Model.Category?.Name</p>
+            <label>Description</label>
+            <p>@Model.Description</p>
+            <label>Quantity</label>
+            <p>@Model.Quantity</p>
+            <label>Price</label>
+            <p>@Model.Price</p>
+        </div>
     </div>
 </div>

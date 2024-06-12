@@ -2,39 +2,49 @@
 @{
     ViewData["Title"] = "Items";
 }
-
-<a asp-action="Create">
-    
-    Add item
-</a>
-
-@if (!Model.Any())
-{
-    <div>
-        <p>No items were added yet.</p>
-    </div>
-}
-else
-{
-    @foreach(Item item in Model){
-        <div>
-            <img src="@($"{FileSettings.ImagesPath}/{item.Img}")" />
-            @item.ItemName
-            <a asp-action="Details" asp-route-id="@item.ItemID">
-                <i class="fa-solid fa-info">Info</i>
-            </a>
-            <a asp-action="Edit" asp-route-id="@item.ItemID">
-                <i class="fa-solid fa-pen-to-square">Edit</i>
-            </a>
-            <form asp-action="Delete" asp-route-id="@item.ItemID" method="post" onsubmit="return confirmDelete()">
-                <input type="hidden" name="_method" value="delete" />
-                <button type="submit" >
-                    <i class="fa-solid fa-trash">Delete</i>
-                </button>
-            </form>  
+<link rel="stylesheet" href="~/css/items-list.css" asp-append-version="true" />
+<div>
+    <h1>
+        Items list
+    </h1>
+    @if (!Model.Any())
+    {
+        <div class="div-no-items">
+            <p>No items were added yet.</p>
         </div>
     }
-}
+    else
+    {
+        @foreach (Item item in Model)
+        {
+            <div class="item-card">
+                <div class="img-container">
+                    <img src="@($"{FileSettings.ItemImagesPath}/{item.Img}")" />
+                </div>
+                <div class="info-container">
+                    <span class="item-name">@item.ItemName</span>
+                </div>
+                <div class="actions-container">
+                    <a asp-action="Details" asp-route-id="@item.ItemID" class="action-button">
+                        <i class="fa-solid fa-info"></i>
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@item.ItemID" class="action-button">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <form asp-action="Delete" asp-route-id="@item.ItemID" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="action-button">
+                            <i class="fa-solid fa-trash delete-icon"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    <div class="add-item">
+        <a asp-action="Create" class="add-button">Add item</a>
+    </div>
+</div>
 @section Scripts {
     <script src="~/js/site.js" asp-append-version="true"></script>
 }

@@ -9,7 +9,7 @@
         {
             _dbContext = dbContext;
             _webHostEnvironment = webHostEnvironment;
-            _imagesPath = $"{_webHostEnvironment.WebRootPath}{FileSettings.ImagesPath}";
+            _imagesPath = $"{_webHostEnvironment.WebRootPath}{FileSettings.ItemImagesPath}";
         }
         public async Task Create(CreateItemFormViewModel model)
         {

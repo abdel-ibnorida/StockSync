@@ -17,12 +17,17 @@
 else
 {
     @foreach(Item item in Model){
-        <a asp-action="Details" asp-route-id="@item.ItemID">
+        <div>
             <img src="@($"{FileSettings.ImagesPath}/{item.Img}")" />
             @item.ItemName
             @item.Price
             @item.
-            <i class="fa-solid fa-info"></i>
-        </a>
+            <i class="fa-solid fa-info">
+                <a asp-action="Details" asp-route-id="@item.ItemID">Info</a>
+            </i>
+            <i class="fa-solid fa-pen-to-square" asp-action="Details" asp-route-id="@item.ItemID"> 
+                <a asp-action="Edit" asp-route-id="@item.ItemID">Edit</a>
+            </i>
+        </div>
     }
 }

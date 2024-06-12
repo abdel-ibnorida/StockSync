@@ -6,5 +6,6 @@
         IEnumerable<Item> GetAll();
         Item? GetById(int id);
         Task<Item?> Update(EditItemFormViewModel model);
+        bool Delete(int id);
     }
 }

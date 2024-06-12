@@ -92,6 +92,28 @@
                 return null;
             }
         }
+        public bool Delete(int id)
+        {
+            var isDeleted = false;
+
+            var item = _dbContext.Items.Find(id);
+
+            if (item is null)
+                return isDeleted;
+
+            _dbContext.Remove(item);
+            var effectedRows = _dbContext.SaveChanges();
+
+            if (effectedRows > 0)
+            {
+                isDeleted = true;
+
+                var img = Path.Combine(_imagesPath, item.Img);
+                File.Delete(img);
+            }
+
+            return isDeleted;
+        }
         private async Task<string> SaveCover(IFormFile cover)
         {
             var imgName = $"{Guid.NewGuid()}{Path.GetExtension(cover.FileName)}";

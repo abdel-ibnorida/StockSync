@@ -85,6 +85,11 @@
             return RedirectToAction(nameof(Index));
            
         }
+        [HttpPost]
+        public IActionResult Delete(int id) {
+            var isDeleted = _itemService.Delete(id);
+            return isDeleted ? RedirectToAction(nameof(Index)) : BadRequest();
+        }
     }
 
 }

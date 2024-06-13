@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: my-dotnet-app
+    env: docker
+    plan: starter
+    region: oregon

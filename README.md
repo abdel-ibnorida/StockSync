@@ -1,4 +1,4 @@
-**Web App CRUD per Gestione di Articoli**
+**Web App CRUD per Gestione di Articoli**  
 Questa è una semplice web application basata su ASP.NET Core per gestire un inventario di articoli, permettendo operazioni CRUD (Create, Read, Update, Delete).
 
 **Funzionalità Principali**  

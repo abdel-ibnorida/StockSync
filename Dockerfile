@@ -6,14 +6,14 @@ EXPOSE 80
 # Usa l'immagine base ufficiale del SDK .NET 8
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["StockSync.csproj", "./"]
+COPY ["StockSync/StockSync.csproj", "./"]
 RUN dotnet restore "StockSync.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet build "StockSync.csproj" -c Release -o /app/build
+RUN dotnet build "StockSync/StockSync.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "StockSync.csproj" -c Release -o /app/publish
+RUN dotnet publish "StockSync/StockSync.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

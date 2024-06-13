@@ -9,8 +9,8 @@ Visualizzazione Dettagliata: Fornisce una vista dettagliata di ogni singolo arti
 Eliminazione degli Articoli: Permette di rimuovere articoli dall'inventario.  
 
 **Tecnologie Utilizzate**  
-**ASP.NET Core**: Framework per lo sviluppo di applicazioni web.  
-**Entity Framework Core**: Per la gestione degli accessi al database.  
-**Razor Pages**: Per la gestione delle view e della logica lato server.  
+ASP.NET Core: Framework per lo sviluppo di applicazioni web.  
+Entity Framework Core: Per la gestione degli accessi al database.  
+Razor Pages: Per la gestione delle view e della logica lato server.  
 
 
